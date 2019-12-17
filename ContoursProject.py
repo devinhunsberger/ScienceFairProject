@@ -20,7 +20,7 @@ while True:
     roi = vid[230:925, 650:1270]
     #Blurring helps reduce image "noise", light particularly makes it difficult for the scanning process and blurring can partially reduce that. 
     mask = cv2.blur(vid,(1,9))
-    #This converts the BGR (in OpenCV it's not RGB but BGR) to grayscale which also helps reduce noise and in general makes it easier to filter and search for a certain color or object. 
+    #This converts the BGR (in OpenCV it's not RGB but BGR) to HSV which also helps reduce noise and in general makes it easier to filter and search for a certain color or object. 
     mask = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
 
     #Creates 2 variables we use later for the filtering.
