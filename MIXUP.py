@@ -1,4 +1,3 @@
-#########################THIS IS THE FIRST MIX OF BOTH TKINTER AND OPEN CV NOT THAT THIS MAY NOT WORK BUT IT MUST BE USABLE BY FEBRUARY 4TH, 2020########################################
 import cv2
 import numpy as np
 import psutil
