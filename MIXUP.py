@@ -22,10 +22,10 @@ def nothing(x):
         pass
 
 #Creates a trackbar to control the limits.
-cv2.createTrackbar('Lower Hue', 'image', 25, 179, nothing)
-cv2.createTrackbar('Lower Saturation', 'image', 125, 255, nothing)
-cv2.createTrackbar('Lower Value', 'image', 205, 255, nothing)
-cv2.createTrackbar('Upper Hue', 'image', 32, 179, nothing)
+cv2.createTrackbar('Lower Hue', 'image', 0, 179, nothing)
+cv2.createTrackbar('Lower Saturation', 'image', 49, 255, nothing)
+cv2.createTrackbar('Lower Value', 'image', 109, 255, nothing)
+cv2.createTrackbar('Upper Hue', 'image', 77, 179, nothing)
 cv2.createTrackbar('Upper Saturation', 'image', 255, 255, nothing)
 cv2.createTrackbar('Upper Value', 'image', 255, 255, nothing)
 print(cv2.getTrackbarPos('Lower', 'image'), cv2.getTrackbarPos('Lower Saturation', 'image'), cv2.getTrackbarPos('Lower Value', 'image'))
@@ -62,9 +62,16 @@ while True:
     #This line draws the contours to the main screen.
     final = cv2.drawContours(dst, contours, -1,(0,255,0), 3, 4, hierarchy, 2, (650,225))
 
+
+    BlockQ = int(mask[348, 310])
+    if BlockQ == 255:
+            cv2.putText(final, 'BLOCK DETECTED', (700, 540), cv2.FONT_HERSHEY_SIMPLEX, 2.0, (0,255,0), 3)
+    else:
+            cv2.putText(final, 'BLOCK NOT DETECTED', (600, 540), cv2.FONT_HERSHEY_SIMPLEX, 2.0, (0, 0, 255), 3)
     #This chunk of code displays the live feed to a window.
     cv2.imshow('final', final)
     cv2.imshow('mask', mask)
+    cv2.resizeWindow('image',600, 300)
 
     k = cv2.waitKey(27) & 0xFF  #This code checks if the escape key has been pressed to end the camera processes and scanning process.
     if k == 27:
